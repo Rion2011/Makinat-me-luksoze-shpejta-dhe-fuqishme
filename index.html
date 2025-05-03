@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxury Cars</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d6192;
+      color: #333;
+    }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1610643124735-b4d2db43f050') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(205, 198, 222);
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .container {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background-color: rgb(113, 107, 238);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card h2 {
+      color: #c0c6cb;
+      margin-bottom: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 26px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .close:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Vetura Luksoze</h1>
+</header>
+<p1>Kliko dhe lexo me shume</p1>
+<section class="container">
+  <!-- Veturat ekzistuese -->
+  <div class="card" onclick="showModal('Mercedes S-Class', 'Mercedes-Benz S-Class është sinonim i luksit, teknologjisë dhe komoditetit.')">
+    <img src="https://media.ed.edmunds-media.com/mercedes-benz/s-class/2025/oem/2025_mercedes-benz_s-class_sedan_amg-s-63-e-performance_fq_oem_1_1600.jpg" alt="Mercedes S-Class">
+    <div class="card-content">
+      <h2>Mercedes S-Class</h2>
+      <p>Luks dhe elegancë gjermane.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('BMW 7 Series', 'BMW 7 Series ofron një përvojë premium me performancë të jashtëzakonshme.')">
+    <img src="https://m.atcdn.co.uk/vms/media/%7Bresize%7D/ce4240aacc9842468ea8b70409f1620d.jpg" alt="BMW 7 Series">
+    <div class="card-content">
+      <h2>BMW 7 Series</h2>
+      <p>Sportivitet dhe klas.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Audi A8', 'Audi A8 kombinon dizajnin e pastër me teknologji inteligjente.')">
+    <img src="https://www.motortrend.com/files/66e3524487b0ec0008bc8baf/5-2025-audi-a8-front-view.jpg?w=768&width=768&q=75&format=webp" alt="Audi A8">
+    <div class="card-content">
+      <h2>Audi A8</h2>
+      <p>Minimalizëm luksoz.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Rolls Royce Phantom', 'Një simbol i pasurisë dhe elegancës absolute.')">
+    <img src="https://images.hgmsites.net/lrg/2025-rolls-royce-phantom-dragon--china_100954503_l.webp" alt="Rolls Royce Phantom">
+    <div class="card-content">
+      <h2>Rolls Royce Phantom</h2>
+      <p>Mbretëresha e rrugës.</p>
+    </div>
+  </div>
+
+  <!-- Vetura të reja -->
+  <div class="card" onclick="showModal('Lamborghini Aventador', 'Lamborghini Aventador është mishërimi i shpejtësisë dhe stilit të çmendur.')">
+    <img src="https://img1.bonhams.com/image?src=Images/live/2022-09/22/25259814-2-35.jpg&left=0.060000000000&right=0.950000000000" alt="Lamborghini Aventador">
+    <div class="card-content">
+      <h2>Lamborghini Aventador</h2>
+      <p>Fuqia e egër italiane.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Ferrari SF90', 'Ferrari SF90 është një superveturë hibride me dizajn futuristik.')">
+    <img src="https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-sf90-xx-stradale-109-654a668fc71a3.jpg?crop=0.582xw:0.490xh;0.204xw,0.373xh&resize=1200:*" alt="Ferrari SF90">
+    <div class="card-content">
+      <h2>Ferrari SF90</h2>
+      <p>Performancë hibride ekstreme.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Porsche Panamera', 'Porsche Panamera përfaqëson luksin dhe sportivitetin në një trup elegant.')">
+    <img src="https://www.motortrend.com/uploads/2024/03/008-2024-porsche-panamera-base-4-turbo-e-hybrid.jpg?w=768&width=768&q=75&format=webp" alt="Porsche Panamera">
+    <div class="card-content">
+      <h2>Porsche Panamera</h2>
+      <p>Luks dhe performancë gjermane.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Bugatti Chiron', 'Njëra nga veturat më të shpejta në botë, simbol i inxhinierisë ekstreme.')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Bugatti_Chiron_1.jpg/960px-Bugatti_Chiron_1.jpg" alt="Bugatti Chiron">
+    <div class="card-content">
+      <h2>Bugatti Chiron</h2>
+      <p>Shpejtësia pa kufi.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Range Rover Vogue', 'Një SUV luksoz që kombinon rehati dhe fuqi.')">
+    <img src="https://hips.hearstapps.com/hmg-prod/images/2023-range-rover-se-p400-lwb-105-1650304551.jpg?crop=0.960xw:0.810xh;0,0.115xh&resize=2048:*" alt="Range Rover Vogue">
+    <div class="card-content">
+      <h2>Range Rover Vogue</h2>
+      <p>Mbret i rrugës dhe terrenit.</p>
+    </div>
+  </div>
+
+  <div class="card" onclick="showModal('Tesla Model S Plaid', 'Vetura më e shpejtë elektrike me teknologji të avancuar.')">
+    <img src="https://www.topgear.com/sites/default/files/2023/09/1%20Tesla%20Model%20S%20Plaid%20-%20DSC09079.jpg" alt="Tesla Model S">
+    <div class="card-content">
+      <h2>Tesla Model S Plaid</h2>
+      <p>E ardhmja elektrike.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modal-title"></h2>
+    <p id="modal-description"></p>
+  </div>
+</div>
+
+<script>
+  function showModal(title, description) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-description').innerText = description;
+    document.getElementById('modal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target == modal) {
+      closeModal();
+    }
+  }
+</script>
+
+</body>
+</html>
+
+   
